@@ -1,0 +1,28 @@
+.card{
+    width: 47px;
+    height: 99px;
+    display: inline-block;
+
+    &>div{
+        border-style: solid;
+        background: url("/cards.png");
+        width: 70px;
+        height: 99px;
+        margin: auto;
+        transform: none;
+        color: gray;
+        border-width: 1px;
+        border-radius: 5px;
+        box-shadow: -3px 1px 3px -1px #e3e3e3;
+        transition-property: transform;
+        transition-duration: 0.25s;
+
+        &.actionable{
+            transform: translateY(-10px);
+            cursor: pointer;
+            &:hover{
+                transform: translateY(-20px);
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.otherPlayer{
+    display: inline-block;
+    background: white;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+    box-shadow: 0 0 10px 10px #f0f0f0;
+    transition-duration: 1s;
+
+    &.active{
+        box-shadow: 0 0 10px 10px #c5ecfb;
+        transform: scale(1.05) translateY(-10px);
+    }
+}
