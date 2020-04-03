@@ -76,11 +76,10 @@ app.post('/api/create', async(req, res) => {
 })
 
 async function move(){
+    console.log("moving")
     //Move to next player
     var game = await db.Game.findOne()
-    var activePlayers = await db.Player.findAll({
-        where: { 'active': true }
-    })
+    var activePlayers = await db.Player.findAll()
     var noOfPlayers = activePlayers.length
     if(noOfPlayers<2){
         game.currentPlayer = -1;
@@ -89,10 +88,11 @@ async function move(){
         var increment = game.direction?1:noOfPlayers-1;
         var currentPosition = parseInt(game.currentPlayer);
         var nextPosition = ( currentPosition+increment )%noOfPlayers;
-        console.log("Found player, ", {position: currentPosition})
+        console.log("Found next player position, ", {position: nextPosition})
         var nextPlayer = await db.Player.findOne({
             where: {position: nextPosition}
         });
+        console.log("Found next player position, ", {position: nextPosition})
         console.log("Found player")
         while(!nextPlayer.active){
             nextPosition = ( nextPosition+increment )%noOfPlayers;
